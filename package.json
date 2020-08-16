@@ -1,0 +1,33 @@
+{
+  "name": "openapi-mashrooy",
+  "version": "1.0.0",
+  "description": "This is a OpenAPI 2 specification for Mashrooy",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm install",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "swagger"
+  ],
+  "license": "Unlicense",
+  "private": true,
+  "dependencies": {
+    "aws-sdk": "^2.635.0",
+    "bcrypt": "^3.0.7",
+    "connect": "^3.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "js-yaml": "^3.3.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.7.7",
+    "mongoose-data-seed": "^2.1.4",
+    "path": "^0.12.7",
+    "swagger-mongoose": "^1.1.2",
+    "swagger-tools": "0.10.1",
+    "xlsx": "^0.15.6"
+  },
+  "devDependencies": {
+    "cors": "^2.8.5"
+  }
+}

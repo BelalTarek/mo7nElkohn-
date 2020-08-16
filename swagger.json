@@ -1,0 +1,2685 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a OpenAPI 2 specification for Mashrooy",
+        "version": "1.0.0",
+        "title": "OpenAPI Mashrooy"
+    },
+    "host": "virtserver.swaggerhub.com",
+    "basePath": "/Mashrooy",
+    "tags": [
+        {
+            "name": "Loan",
+            "description": "Loan creation and tracking operations"
+        },
+        {
+            "name": "Branch",
+            "description": "Branch creation and listing operations"
+        },
+        {
+            "name": "Category",
+            "description": "Category listing operations"
+        },
+        {
+            "name": "User",
+            "description": "User crud and auth operations"
+        },
+        {
+            "name": "App",
+            "description": "App layout crud and operations"
+        },
+        {
+            "name": "Group",
+            "description": "Group crud and permessions operations"
+        },
+        {
+            "name": "Product",
+            "description": "Product crud and listing operations"
+        }
+    ],
+    "schemes": [
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/app": {
+            "get": {
+                "tags": [
+                    "App"
+                ],
+                "description": "list all layout configs",
+                "operationId": "getAppLayoutList",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/App"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ],
+                "x-swagger-router-controller": "App"
+            },
+            "post": {
+                "tags": [
+                    "App"
+                ],
+                "summary": "create configuration for whole layout",
+                "description": "add new custom config for header,sidebar,footer,aside and styling",
+                "operationId": "addAppLayout",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "layout",
+                        "description": "object of the new custom layout config",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/App"
+                            }
+                        }
+                    },
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/App"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ],
+                "x-swagger-router-controller": "App"
+            }
+        },
+        "/app/{id}": {
+            "get": {
+                "tags": [
+                    "App"
+                ],
+                "summary": "get configuration for whole layout",
+                "description": "get custom config for header,sidebar,footer,aside and styling",
+                "operationId": "appGetOne",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of item that needs to be fetched",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/App"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ],
+                "x-swagger-router-controller": "App"
+            },
+            "put": {
+                "tags": [
+                    "App"
+                ],
+                "summary": "update configuration for whole layout",
+                "description": "update custom config for header,sidebar,footer,aside and styling",
+                "operationId": "updateAppLayout",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of item that needs to be fetched",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "layout",
+                        "description": "object of the new custom layout config",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/App"
+                        }
+                    },
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/App"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ],
+                "x-swagger-router-controller": "App"
+            },
+            "delete": {
+                "tags": [
+                    "App"
+                ],
+                "summary": "delete configuration for whole layout",
+                "description": "delete custom config for header,sidebar,footer,aside and styling",
+                "operationId": "deleteAppLayout",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of item that needs to be deleted",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/App"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ],
+                "x-swagger-router-controller": "App"
+            }
+        },
+        "/loan": {
+            "get": {
+                "tags": [
+                    "Loan"
+                ],
+                "summary": "List All loan ",
+                "description": "",
+                "operationId": "listLoans",
+                "parameters": [
+                    {
+                        "name": "rps",
+                        "in": "query",
+                        "description": "Size of the page results in pagination",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "rpi",
+                        "in": "query",
+                        "description": "Current page index in pagination",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Loan"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "loanstore_auth": [
+                            "write:loans",
+                            "read:loans"
+                        ]
+                    }
+                ],
+                "x-swagger-router-controller": "Loan"
+            },
+            "post": {
+                "tags": [
+                    "Loan"
+                ],
+                "summary": "Add a new loan Applications",
+                "operationId": "creatLoan",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "createLoan",
+                        "description": "Loan object that needs to be added",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Loan"
+                            }
+                        }
+                    },
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Loan"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponse"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict record",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponse"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "loanstore_auth": [
+                            "write:loans",
+                            "read:loans"
+                        ]
+                    }
+                ],
+                "x-swagger-router-controller": "Loan"
+            }
+        },
+        "/loan/uploadLoanAttachments/{loanId}": {
+            "post": {
+                "tags": [
+                    "Loan"
+                ],
+                "summary": "Upload a NationalId.",
+                "operationId": "uploadLoanAttachments",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "parameters": [
+                    {
+                        "name": "loanId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "upfile",
+                        "in": "formData",
+                        "description": "The image to upload.",
+                        "required": false,
+                        "type": "file"
+                    },
+                    {
+                        "name": "description",
+                        "in": "formData",
+                        "description": "The description of uploaded file.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/LoanAttachments"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponse"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "loanstore_auth": [
+                            "write:loans",
+                            "read:loans"
+                        ]
+                    }
+                ],
+                "x-swagger-router-controller": "Loan"
+            }
+        },
+        "/loan/{loanId}": {
+            "put": {
+                "tags": [
+                    "Loan"
+                ],
+                "summary": "Updates a loan by Id",
+                "operationId": "updateLoanById",
+                "parameters": [
+                    {
+                        "name": "loanId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "loan",
+                        "description": "Updated object of the loan",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Loan"
+                        }
+                    },
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Loan"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid ID supplied",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Record Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict record",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "loanstore_auth": [
+                            "write:loans",
+                            "read:loans"
+                        ]
+                    }
+                ],
+                "x-swagger-router-controller": "Loan"
+            }
+        },
+        "/loan/calculation": {
+            "post": {
+                "tags": [
+                    "Loan"
+                ],
+                "summary": "calculate the loan insatllment options",
+                "description": "",
+                "operationId": "calculateLoan",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "loanParams",
+                        "description": "Loan object that needs to be calculated",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/loanParams"
+                        }
+                    },
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/installments"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation Error",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponse"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict record",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponse"
+                        }
+                    }
+                },
+                "x-swagger-router-controller": "Loan"
+            }
+        },
+        "/loan/tracking/{nationalId}": {
+            "get": {
+                "tags": [
+                    "Loan"
+                ],
+                "summary": "tracking loan state",
+                "description": "",
+                "operationId": "trackingLoan",
+                "parameters": [
+                    {
+                        "name": "nationalId",
+                        "in": "path",
+                        "description": "Loan object that needs to be tracked",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Loan"
+                        }
+                    },
+                    "400": {
+                        "description": "Validation Error",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponse"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict record",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponse"
+                        }
+                    }
+                },
+                "x-swagger-router-controller": "Loan"
+            }
+        },
+        "/loan/listdbyFilters": {
+            "post": {
+                "tags": [
+                    "Loan"
+                ],
+                "summary": "List Loans By specific Filters",
+                "operationId": "listLoansByFilters",
+                "parameters": [
+                    {
+                        "name": "rps",
+                        "in": "query",
+                        "description": "Size of the page results in pagination",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "rpi",
+                        "in": "query",
+                        "description": "Current page index in pagination",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "in": "body",
+                        "name": "matchingParams",
+                        "description": "The params to fetch users.",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/matchingParams"
+                        }
+                    },
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Loan"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "loanstore_auth": [
+                            "write:loans",
+                            "read:loans"
+                        ]
+                    }
+                ],
+                "x-swagger-router-controller": "Loan"
+            }
+        },
+        "/loan/status": {
+            "get": {
+                "tags": [
+                    "Loan"
+                ],
+                "summary": "List All loan types",
+                "description": "",
+                "operationId": "listLoanStatus",
+                "parameters": [
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/loanStatus"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "loanstore_auth": [
+                            "write:loans",
+                            "read:loans"
+                        ]
+                    }
+                ],
+                "x-swagger-router-controller": "Loan"
+            }
+        },
+        "/loan/types": {
+            "get": {
+                "tags": [
+                    "Loan"
+                ],
+                "summary": "List All loan types",
+                "description": "",
+                "operationId": "listLoanTypes",
+                "parameters": [
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/loanType"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "loanstore_auth": [
+                            "write:loans",
+                            "read:loans"
+                        ]
+                    }
+                ],
+                "x-swagger-router-controller": "Loan"
+            }
+        },
+        "/branch": {
+            "get": {
+                "tags": [
+                    "Branch"
+                ],
+                "summary": "List All branches",
+                "description": "",
+                "operationId": "listBranches",
+                "parameters": [
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Branch"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "loanstore_auth": [
+                            "write:loans",
+                            "read:loans"
+                        ]
+                    }
+                ],
+                "x-swagger-router-controller": "Branch"
+            }
+        },
+        "/branch/listByGeo": {
+            "get": {
+                "tags": [
+                    "Branch"
+                ],
+                "description": "Get  list of branchs by GEO",
+                "operationId": "getBranchByGeo",
+                "parameters": [
+                    {
+                        "name": "longitude",
+                        "in": "query",
+                        "description": "longitude of the area that needs to fetch own branches",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "latitude",
+                        "in": "query",
+                        "description": "latitude of the area that needs to fetch own branches",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Branch"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "loanstore_auth": [
+                            "write:loans",
+                            "read:loans"
+                        ]
+                    }
+                ],
+                "x-swagger-router-controller": "Branch"
+            }
+        },
+        "/category": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "List All Categories types",
+                "description": "",
+                "operationId": "listCategoryTypes",
+                "parameters": [
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Category"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "loanstore_auth": [
+                            "write:loans",
+                            "read:loans"
+                        ]
+                    }
+                ],
+                "x-swagger-router-controller": "Category"
+            }
+        },
+        "/category/subCategory/{categoryId}": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "List All subCategory types",
+                "description": "",
+                "operationId": "listSubCategory",
+                "parameters": [
+                    {
+                        "name": "categoryId",
+                        "in": "path",
+                        "description": "categoryId to list all sub Category",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/SubCategory"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "loanstore_auth": [
+                            "write:loans",
+                            "read:loans"
+                        ]
+                    }
+                ],
+                "x-swagger-router-controller": "Category"
+            }
+        },
+        "/user": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get All user",
+                "operationId": "listUsers",
+                "parameters": [
+                    {
+                        "name": "rps",
+                        "in": "query",
+                        "description": "Size of the page results in pagination",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "rpi",
+                        "in": "query",
+                        "description": "Current page index in pagination",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "loanstore_auth": [
+                            "write:loans",
+                            "read:loans"
+                        ]
+                    }
+                ],
+                "x-swagger-router-controller": "User"
+            },
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Create a list of user",
+                "description": "This can only be done by the logged in user.",
+                "operationId": "createUser",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Create user List",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    },
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict record",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "loanstore_auth": [
+                            "write:loans",
+                            "read:loans"
+                        ]
+                    }
+                ],
+                "x-swagger-router-controller": "User"
+            },
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Updated user",
+                "description": "This can only be done by the logged in user.",
+                "operationId": "updateUser",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "user",
+                        "description": "Updated user object",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    },
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid username supplied",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "loanstore_auth": [
+                            "write:loans",
+                            "read:loans"
+                        ]
+                    }
+                ],
+                "deprecated": false,
+                "x-swagger-router-controller": "User"
+            }
+        },
+        "/user/login": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Logs user into the system",
+                "description": "",
+                "operationId": "userLogin",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "user",
+                        "description": "The user email & Password for login",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "headers": {
+                            "X-access-token": {
+                                "type": "string",
+                                "description": "authorization token"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid username/password supplied",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "loanstore_auth": [
+                            "write:loans",
+                            "read:loans"
+                        ]
+                    }
+                ],
+                "x-swagger-router-controller": "User"
+            }
+        },
+        "/user/logout": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Logs out current logged in user session",
+                "description": "",
+                "operationId": "userLogout",
+                "parameters": [
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                },
+                "x-swagger-router-controller": "User"
+            }
+        },
+        "/user/listdbyFilters": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "ListUsers By specific Filters",
+                "operationId": "listUsersByFilters",
+                "parameters": [
+                    {
+                        "name": "rps",
+                        "in": "query",
+                        "description": "Size of the page results in pagination",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "rpi",
+                        "in": "query",
+                        "description": "Current page index in pagination",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "in": "body",
+                        "name": "matchingParams",
+                        "description": "The params to fetch users.",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/matchingParams"
+                        }
+                    },
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "loanstore_auth": [
+                            "write:loans",
+                            "read:loans"
+                        ]
+                    }
+                ],
+                "x-swagger-router-controller": "User"
+            }
+        },
+        "/user/getUser/{name}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get user by user name",
+                "operationId": "getUserByName",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "description": "The id that needs to be fetched. Use user1 for testing. ",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid username supplied",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "loanstore_auth": [
+                            "write:loans",
+                            "read:loans"
+                        ]
+                    }
+                ],
+                "x-swagger-router-controller": "User"
+            }
+        },
+        "/user/{id}": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Updated user",
+                "description": "This can only be done by the logged in user.",
+                "operationId": "updateUserById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id that need to be updated",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "user",
+                        "description": "Updated user object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid username supplied",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "loanstore_auth": [
+                            "write:loans",
+                            "read:loans"
+                        ]
+                    }
+                ],
+                "x-swagger-router-controller": "User"
+            },
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Deletes a User",
+                "operationId": "deleteUserById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id to delete",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid ID supplied",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Record Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "loanstore_auth": [
+                            "write:loans",
+                            "read:loans"
+                        ]
+                    }
+                ],
+                "x-swagger-router-controller": "User"
+            }
+        },
+        "/group": {
+            "get": {
+                "tags": [
+                    "Group"
+                ],
+                "summary": "list groups of permessions",
+                "operationId": "listGroup",
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "headers": {
+                            "X-Rate-Limit": {
+                                "type": "integer",
+                                "format": "int32",
+                                "description": "calls per hour allowed by the employee"
+                            },
+                            "X-Expires-After": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "date in UTC when token expires"
+                            }
+                        },
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid username/password supplied"
+                    }
+                },
+                "x-swagger-router-controller": "Group"
+            },
+            "post": {
+                "tags": [
+                    "Group"
+                ],
+                "summary": "ceate group",
+                "description": "This can only be done by the logged in Employee.",
+                "operationId": "createGroup",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Created Group array",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Group"
+                            }
+                        }
+                    },
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Group"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Record Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict record",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "x-swagger-router-controller": "Group"
+            }
+        },
+        "/group/{id}": {
+            "get": {
+                "tags": [
+                    "Group"
+                ],
+                "summary": "Get employee by Id",
+                "operationId": "getGroupById",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The name that needs to be fetched. Use user1 for testing.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid username supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                },
+                "x-swagger-router-controller": "Group"
+            },
+            "put": {
+                "tags": [
+                    "Group"
+                ],
+                "summary": "Updated Group",
+                "description": "This can only be done by the logged in employee.",
+                "operationId": "updateGroupById",
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the group to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Updated employee object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Group"
+                        }
+                    },
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Group"
+                        }
+                    },
+                    "400": {
+                        "description": "Validation Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Record Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict record",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "x-swagger-router-controller": "Group"
+            },
+            "delete": {
+                "tags": [
+                    "Group"
+                ],
+                "summary": "Delete group",
+                "description": "This can only be done by the logged in employee.",
+                "operationId": "deleteGroup",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The Group that needs to be deleted",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid ID supplied",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Record Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "x-swagger-router-controller": "Group"
+            }
+        },
+        "/product": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "list Products",
+                "operationId": "listProduct",
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "rps",
+                        "in": "query",
+                        "description": "Size of the page results in pagination",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "rpi",
+                        "in": "query",
+                        "description": "Current page index in pagination",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Product"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid username supplied",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Products not found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "loanstore_auth": [
+                            "write:loans",
+                            "read:loans"
+                        ]
+                    }
+                ],
+                "x-swagger-router-controller": "Product"
+            }
+        },
+        "/product/{id}": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Get Product by Id",
+                "operationId": "getProductById",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the product that needs to be fetched.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Product"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid username supplied",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Products not found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "loanstore_auth": [
+                            "write:loans",
+                            "read:loans"
+                        ]
+                    }
+                ],
+                "x-swagger-router-controller": "Product"
+            },
+            "put": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Updated Product",
+                "description": "This can only be done by the logged in employee.",
+                "operationId": "updateProductById",
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the product that needs to be updated",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Updated Product object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Product"
+                        }
+                    },
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Product"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid username supplied",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Products not found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "loanstore_auth": [
+                            "write:loans",
+                            "read:loans"
+                        ]
+                    }
+                ],
+                "x-swagger-router-controller": "Product"
+            },
+            "delete": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Delete Product",
+                "description": "This can only be done by the logged in employee.",
+                "operationId": "deleteProductById",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The Product id that needs to be deleted",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "user token to check if user authenticated",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Product"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid username supplied",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Products not found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "loanstore_auth": [
+                            "write:loans",
+                            "read:loans"
+                        ]
+                    }
+                ],
+                "x-swagger-router-controller": "Product"
+            }
+        }
+    },
+    "securityDefinitions": {
+        "loanstore_auth": {
+            "type": "oauth2",
+            "authorizationUrl": "https://tasaheel.swagger.io/oauth/authorize",
+            "flow": "implicit",
+            "scopes": {
+                "write:loans": "modify loans in your account",
+                "read:loans": "read your loans"
+            }
+        },
+        "api_key": {
+            "type": "apiKey",
+            "name": "api_key",
+            "in": "header"
+        }
+    },
+    "definitions": {
+        "Loan": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "applicant_fullname": {
+                    "type": "string"
+                },
+                "applicant_id": {
+                    "type": "string"
+                },
+                "applicant_nationalId": {
+                    "type": "string"
+                },
+                "applicant_nationalIdExpDate": {
+                    "type": "string"
+                },
+                "applicant_phoneNumber": {
+                    "type": "string"
+                },
+                "branchId": {
+                    "x-swagger-mongoose": {
+                        "$ref": "#/definitions/Branch"
+                    }
+                },
+                "productId": {
+                    "x-swagger-mongoose": {
+                        "$ref": "#/definitions/Product"
+                    }
+                },
+                "loanOfficer": {
+                    "type": "string"
+                },
+                "clientType": {
+                    "type": "string"
+                },
+                "applicant_jobTitle": {
+                    "type": "string"
+                },
+                "commercialRegistrationNumber": {
+                    "type": "string"
+                },
+                "monthlyIncome_d": {
+                    "type": "string"
+                },
+                "legalBusinessStructure": {
+                    "type": "string"
+                },
+                "businessAddress": {
+                    "type": "string"
+                },
+                "homeAddress": {
+                    "type": "string"
+                },
+                "guarantor": {
+                    "type": "array",
+                    "items": {
+                        "x-swagger-mongoose": {
+                            "$ref": "#/definitions/Loan_guarantor"
+                        }
+                    }
+                },
+                "loanDate": {
+                    "type": "string"
+                },
+                "loanType": {
+                    "x-swagger-mongoose": {
+                        "$ref": "#/definitions/loanType"
+                    }
+                },
+                "loanAmount": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "loanUsage": {
+                    "type": "string"
+                },
+                "loanStatus": {
+                    "x-swagger-mongoose": {
+                        "$ref": "#/definitions/loanStatus"
+                    }
+                },
+                "numberOfMonths": {
+                    "type": "integer"
+                },
+                "deposit": {
+                    "type": "number",
+                    "format": "float"
+                },
+                "monthlyInstallment": {
+                    "type": "number",
+                    "format": "float"
+                }
+            }
+        },
+        "loanType": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "loanStatus": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "LoanAttachments": {
+            "type": "object",
+            "properties": {
+                "loanId": {
+                    "x-swagger-mongoose": {
+                        "$ref": "#/definitions/Loan"
+                    }
+                },
+                "files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/FileData"
+                        }
+                    }
+            }
+        },
+        "FileData": {
+            "type": "object",
+            "properties": {
+                "fileUrl": {
+                    "type": "string"
+                },
+                "fileName": {
+                    "type": "string"
+                }
+            }
+        },
+        "Branch": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "branch_code": {
+                    "type": "integer"
+                },
+                "branch_name": {
+                    "type": "string"
+                },
+                "en_name": {
+                    "type": "string"
+                },
+                "districtId": {
+                    "type": "string"
+                },
+                "governantId": {
+                    "type": "string"
+                },
+                "branch_add": {
+                    "type": "string"
+                },
+                "en_address": {
+                    "type": "string"
+                },
+                "geo": {
+                    "x-swagger-mongoose": {
+                        "$ref": "#/definitions/Branch_geo"
+                    }
+                },
+                "update_stamp": {
+                    "type": "string"
+                },
+                "governorate": {
+                    "x-swagger-mongoose": {
+                        "$ref": "#/definitions/Governorate"
+                    }
+                }
+            }
+        },
+        "User": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "fullName": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "branchId": {
+                    "x-swagger-mongoose": {
+                        "$ref": "#/definitions/Branch"
+                    }
+                },
+                "isActive": {
+                    "type": "boolean",
+                    "default": true
+                },
+                "firstLogin": {
+                    "type": "boolean",
+                    "default": true
+                },
+                "groups": {
+                    "type": "array",
+                    "items": {
+                        "x-swagger-mongoose": {
+                            "$ref": "#/definitions/Group"
+                        }
+                    }
+                },
+                "createdBy": {
+                    "x-swagger-mongoose": {
+                        "$ref": "#/definitions/User"
+                    }
+                }
+            }
+        },
+        "Group": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "name": {
+                    "type": "object",
+                    "properties": {
+                        "ar": {
+                            "type": "string"
+                        },
+                        "en": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "permissions": {
+                    "type": "string"
+                }
+            }
+        },
+        "ApiResponse": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "loanParams": {
+            "type": "object",
+            "properties": {
+                "LoanType": {
+                    "type": "integer"
+                },
+                "LoanInstallment": {
+                    "type": "integer"
+                },
+                "loanAmount": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "branchCode": {
+                    "type": "integer"
+                }
+            }
+        },
+        "installments": {
+            "type": "object",
+            "properties": {
+                "installment": {
+                    "type": "number",
+                    "format": "double"
+                }
+            }
+        },
+        "Loan_guarantor": {
+            "type": "object",
+            "properties": {
+                "guarantorFullname": {
+                    "type": "string"
+                },
+                "guarantorNationalId": {
+                    "type": "string"
+                },
+                "guarantorNationalIdExpDate": {
+                    "type": "string"
+                },
+                "guarantorPhoneNumber": {
+                    "type": "string"
+                },
+                "guarantorJobTitle": {
+                    "type": "string"
+                },
+                "guarantorEmploymentType_d": {
+                    "type": "string"
+                },
+                "guarantorGender": {
+                    "type": "string"
+                },
+                "guarantorAge_d": {
+                    "type": "number",
+                    "format": "integer"
+                },
+                "guarantorAddress": {
+                    "type": "string"
+                }
+            }
+        },
+        "Branch_geo": {
+            "type": "object",
+            "properties": {
+                "longitude": {
+                    "type": "string"
+                },
+                "latitude": {
+                    "type": "string"
+                }
+            }
+        },
+        "Category": {
+            "type": "object",
+            "properties": {
+                "categoryCode": {
+                    "type": "integer"
+                },
+                "categoryName": {
+                    "type": "string"
+                },
+                "img": {
+                    "type": "string"
+                }
+            }
+        },
+        "SubCategory": {
+            "type": "object",
+            "properties": {
+                "categoryCode": {
+                    "type": "integer"
+                },
+                "subCategoryCode": {
+                    "type": "integer"
+                },
+                "subCategoryName": {
+                    "type": "string"
+                },
+                "img": {
+                    "type": "string"
+                }
+            }
+        },
+        "Product": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "categoryCode": {
+                    "type": "integer"
+                },
+                "subCategoryCode": {
+                    "type": "integer"
+                },
+                "productCode": {
+                    "type": "integer"
+                },
+                "price": {
+                    "type": "integer",
+                    "format": "float"
+                },
+                "productName": {
+                    "type": "string"
+                },
+                "installmentOptions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/installmentOptions"
+                    }
+                },
+                "img": {
+                    "type": "string"
+                }
+            }
+        },
+        "installmentOptions": {
+                "type": "object",
+                "properties": {
+                    "numberOfMonths": {
+                        "type": "integer"
+                    },
+                    "deposit": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "monthlyInstallment": {
+                        "type": "number",
+                        "format": "float"
+                    }
+                }
+        },
+        "matchingParams": {
+            "type": "object",
+            "properties": {
+                "governantId": {
+                    "type": "string"
+                },
+                "districtId": {
+                    "type": "string"
+                },
+                "branchId": {
+                    "type": "string"
+                }
+            }
+        },
+        "Governorate": {
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "example": "d290f1ee-6c54-4b01-90e6-d701748f0851"
+                },
+                "name": {
+                    "type": "object",
+                    "properties": {
+                        "ar": {
+                            "type": "string"
+                        },
+                        "en": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "example": {
+                "name": "Cairo",
+                "id": "d290f1ee-6c54-4b01-90e6-d701748f0851"
+            }
+        }
+    }
+}
